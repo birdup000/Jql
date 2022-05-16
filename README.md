@@ -26,6 +26,7 @@ Value is:
 ```
 
 
+
 ```jql("my_database.db").write("eikosa.books.literature.tolstoy","")```
 
 Returns:
@@ -38,6 +39,7 @@ Returns:
         }
     }
 }
+```
 
 ### 📖 Read
 ```jql("my_database.db").read("eikosa.books.literature")```
