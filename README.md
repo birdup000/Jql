@@ -1,6 +1,6 @@
 # JQL
 
-It combines SQL's speed and JSON's flexibilitiy.
+It combines SQL's speed and JSON's flexibility.
 
 SQL + JSON = JQL
 
