@@ -24,6 +24,20 @@ Value is:
 }
 ```
 
+
+```jql("my_database.db").write("eikosa.books.literature.tolstoy","")```
+
+Returns:
+```
+{
+    "books": {
+        "literature": {
+            "dosteyovsky": "",
+            "tolstoy": ""
+        }
+    }
+}
+
 ### 📖 Read
 ```jql("my_database.db").read("eikosa.books.literature")```
 
