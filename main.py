@@ -90,12 +90,15 @@ class jql:
             self.connection.execute(f"INSERT INTO main VALUES ('{key}', '{value}')")
         else:
             self.connection.execute(f"UPDATE main SET value = '{value}' WHERE key = '{key}'")
+        self.save()
     
     def rename_key(self, key, new_key):
         self.connection.execute(f"UPDATE main SET key = '{new_key}' WHERE key = '{key}'")
+        self.save()
     
     def delete_key(self, key):
         self.connection.execute(f"DELETE FROM main WHERE key = '{key}'")
+        self.save()
     
     def db_exist(self):
         return os.path.isfile(self.sqlFile)
@@ -104,9 +107,12 @@ class jql:
         self.update('')
 
         
-    def __del__(self):
+    def save(self):
         self.connection.commit()
+    
+    def __exit__(self):
         self.connection.close()
+        
     
     def create_table(self, tableName, columns):
         sql = 'CREATE TABLE ' + tableName + '('
@@ -118,18 +124,14 @@ class jql:
         self.update(sql)
 
 
-jql("my_database.db").write("a.b.c","asd")
+test = jql("my_database.db")
+test.write("eikosa.password","1234")
+test.write("eikosa.age","82")
+
+test.write("eikosa.books.technic.python","")
+test.write("eikosa.books.technic.physics","")
+
+test.write("eikosa.books.literature.dosteyovsky","")
 
 
-
-
-jql("my_database.db").write("eikosa.password","1234")
-jql("my_database.db").write("eikosa.age","82")
-
-jql("my_database.db").write("eikosa.books.technic.python","")
-jql("my_database.db").write("eikosa.books.technic.physics","")
-
-jql("my_database.db").write("eikosa.books.literature.dosteyovsky","")
-
-
-jql("my_database.db").read("eikosa.books.literature")
+test.read("eikosa.books.literature")
