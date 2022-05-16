@@ -125,13 +125,14 @@ class jql:
 
 
 test = jql("my_database.db")
-test.write("eikosa.password","1234")
-test.write("eikosa.age","82")
+#test.write("eikosa.password","1234")
+#test.write("eikosa.age","82")
+#
+#test.write("eikosa.books.technic.python","")
+#test.write("eikosa.books.technic.physics","")
 
-test.write("eikosa.books.technic.python","")
-test.write("eikosa.books.technic.physics","")
+#test.write("eikosa.books.literature.dosteyovsky","")
 
-test.write("eikosa.books.literature.dosteyovsky","")
+test.delete("eikosa.books.literature.tolstoy")
 
-
-test.read("eikosa.books.literature")
+#test.read("eikosa.books.literature")
