@@ -24,10 +24,36 @@ Value is:
 }
 ```
 
-###Read
+### Read
 ```jql("my_database.db").read("eikosa.books.literature")```
 
 Returns:
 ```
 {'dosteyovsky': ''}
+```
+
+
+### Del
+```jql("my_database.db").del("eikosa.books.literature.tolstoy")```
+
+Before:
+```
+{
+    "books": {
+        "literature": {
+            "dosteyovsky": "",
+            "tolstoy": ""
+        }
+    }
+}
+```
+After:
+```
+{
+    "books": {
+        "literature": {
+            "dosteyovsky": ""
+        }
+    }
+}
 ```
