@@ -75,6 +75,27 @@ After:
 }
 ```
 
+
+```jql("my_database.db").del("eikosa.books.literature")```
+
+Before:
+```
+{
+    "books": {
+        "literature": {
+            "dosteyovsky": "",
+            "tolstoy": ""
+        }
+    }
+}
+```
+After:
+```
+{
+    "books": {}
+}
+```
+
 ### 💥 Delete Value
 ```
 jql("my_database.db").delete_key("eikosa")
