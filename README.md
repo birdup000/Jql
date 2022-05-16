@@ -4,7 +4,7 @@ It combines SQL's speed and JSON's flexibilitiy.
 
 SQL + JSON = JQL
 
-All JQL tables have two columns, Key and Value and value is json.
+All JQL tables have two columns, Key and Value, value is json.
 
 ## Examples
 ```test.write("eikosa.books.literature.dosteyovsky","")```
