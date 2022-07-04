@@ -13,7 +13,7 @@ All JQL tables have two columns, Key and Value, value is json.
 ## 📚 Examples
 
 ### ✏️ Write
-```jql("my_database.db").write("eikosa.books.literature.Dostoyevsky","")```
+```jql("my_database.db").write("eikosa.books.literature.Dostoyevsky","Crime and Punishment")```
 
 
 Value is:
@@ -21,7 +21,7 @@ Value is:
 {
     "books": {
         "literature": {
-            "Dostoyevsky": ""
+            "Dostoyevsky": "Crime and Punishment"
         }
     }
 }
@@ -36,7 +36,7 @@ Returns:
 {
     "books": {
         "literature": {
-            "Dostoyevsky": "",
+            "Dostoyevsky": "Crime and Punishment",
             "tolstoy": ""
         }
     }
@@ -48,7 +48,7 @@ Returns:
 
 Returns:
 ```
-{'Dostoyevsky': ''}
+{'Dostoyevsky': 'Crime and Punishment'}
 ```
 
 
@@ -60,7 +60,7 @@ Before:
 {
     "books": {
         "literature": {
-            "Dostoyevsky": "",
+            "Dostoyevsky": "Crime and Punishment",
             "tolstoy": ""
         }
     }
@@ -71,7 +71,7 @@ After:
 {
     "books": {
         "literature": {
-            "Dostoyevsky": ""
+            "Dostoyevsky": "Crime and Punishment"
         }
     }
 }
@@ -85,7 +85,7 @@ Before:
 {
     "books": {
         "literature": {
-            "Dostoyevsky": "",
+            "Dostoyevsky": "Crime and Punishment",
             "tolstoy": ""
         }
     }
