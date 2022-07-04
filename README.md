@@ -63,6 +63,7 @@ Returns:
 {'Dostoyevsky': 'Crime and Punishment'}
 ```
 
+---------------
 
 ### 🗑 Delete Path Element
 ```jql("my_database.db").del("eikosa.books.literature.tolstoy")```
