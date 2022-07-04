@@ -52,6 +52,25 @@ Returns:
 }
 ```
 
+
+```jql("my_database.db").write("eikosa.books.literature.george orwell",["1984", "Animal Farm"])```
+
+Returns:
+```
+{
+    "books": {
+        "literature": {
+            "Dostoyevsky": "Crime and Punishment",
+            "tolstoy": "",
+            "george orwell": [
+                "1984", 
+                "Animal Farm"
+            ]                
+        }
+    }
+}
+```
+
 ```jql("my_database.db").write("eikosa","is a programmer")```
 
 
