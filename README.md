@@ -43,6 +43,16 @@ Returns:
 }
 ```
 
+```jql("my_database.db").write("eikosa","is a programmer")```
+
+
+Value is:
+```
+{
+    "is a programmer": ""
+}
+```
+
 ### 📖 Read
 ```jql("my_database.db").read("eikosa.books.literature")```
 
