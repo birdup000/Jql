@@ -12,6 +12,13 @@ All JQL tables have two columns, Key and Value, value is json.
 
 ![image](https://user-images.githubusercontent.com/20538090/168511649-75ca7a7a-8670-42b0-86b9-a0d0acda6f45.png)
 
+different types of data are stored in different files instead of tables, like this:
+
+`jql("books.db")`
+`jql("films.db")`
+`jql("user datas.db")`
+etc...
+
 ## 📚 Examples
 
 ### ✏️ Write
