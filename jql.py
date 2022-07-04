@@ -41,6 +41,9 @@ class jql:
             return js
         
         return get
+    
+    def get_all(self):
+        return self.connection.execute("SELECT * FROM main").fetchall()
 
     def write(self, path, value):
         main_split = path.split(self.sep)
