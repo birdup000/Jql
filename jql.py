@@ -12,16 +12,21 @@ def dict_factory(cursor, row):
 
 
 class jql:
-    def __init__(self, sqlFile):
+    def __init__(self, sqlFile, sep = '.'):
         self.sqlFile = sqlFile
+        self.sep = sep
         self.connection = sqlite3.connect(self.sqlFile)
         self.cursor = self.connection.cursor()
 
         self.connection.row_factory = dict_factory
     
     def read(self, path):
-        split = path.split('.')
-        get = self.connection.execute(f"SELECT * FROM main WHERE key = '{split[0]}'").fetchall()[0]
+        split = path.split(self.sep)
+        get = self.connection.execute(f"SELECT * FROM main WHERE key = '{split[0]}'").fetchall()
+        if len(get) == 0:
+            return {}        
+        get = get[0]
+        
         if "value" in get:
             split = split[1:]
 
@@ -38,7 +43,7 @@ class jql:
         return get
 
     def write(self, path, value):
-        main_split = path.split('.')
+        main_split = path.split(self.sep)
         get = self.connection.execute(f"SELECT * FROM main WHERE key = '{main_split[0]}'").fetchall()
         if get != []:
             get = get[0]
@@ -67,7 +72,7 @@ class jql:
 
 
     def delete(self, path):
-        main_split = path.split('.')
+        main_split = path.split(self.sep)
         get = self.connection.execute(f"SELECT * FROM main WHERE key = '{main_split[0]}'").fetchall()[0]
         if "value" in get:
             split = main_split[1:]
@@ -90,7 +95,7 @@ class jql:
     def set_value_raw(self, key, value):
         get = self.connection.execute(f"SELECT * FROM main WHERE key = '{key}'").fetchall()
         if get == []:
-            self.connection.execute(f"INSERT INTO main VALUES ('{key}', '{value}')")
+            self.connection.execute("INSERT INTO main VALUES (?, ?)", (key, value))
         else:
             self.connection.execute(f"UPDATE main SET value = '{value}' WHERE key = '{key}'")
         self.save()
@@ -127,7 +132,10 @@ class jql:
         self.update(sql)
 
 
-#test = jql("my_database.db")
+if __name__ == "__main__":
+    test = jql("my_database.db")
+    test.read("dfsaafasdf")
+
 #test.write("eiko", 1465)
 #test.write("eikosa.password","1234")
 #test.write("eikosa.age","82")
