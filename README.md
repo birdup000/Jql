@@ -53,6 +53,8 @@ Value is:
 }
 ```
 
+---------------
+
 ### 📖 Read
 ```jql("my_database.db").read("eikosa.books.literature")```
 
@@ -108,8 +110,15 @@ After:
 }
 ```
 
+---------------
+
 ### 💥 Delete Value
 ```
 jql("my_database.db").delete_key("eikosa")
 ```
 ![image](https://user-images.githubusercontent.com/20538090/168512470-0fe16e53-c669-4a02-8386-76f6fd21db36.png)
+
+---------------
+
+### 🔎 Search
+🔜
