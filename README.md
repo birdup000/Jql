@@ -4,8 +4,6 @@ It combines SQL's speed and JSON's flexibility.
 
 SQL + JSON = JQL ⚙️
 
-By _Eiko_
-
 # 📖 Instructions
 
 All JQL tables have two columns, Key and Value, value is json.
