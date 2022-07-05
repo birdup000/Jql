@@ -22,7 +22,7 @@ class jql:
     
     def read(self, path):
         split = path.split(self.sep)
-        get = self.connection.execute(f"SELECT * FROM main WHERE key = '{split[0]}'").fetchall()
+        get = self.connection.execute("SELECT * FROM main WHERE key = ?", (split[0],)).fetchall()
         if len(get) == 0:
             return {}        
         get = get[0]
@@ -47,7 +47,7 @@ class jql:
 
     def write(self, path, value):
         main_split = path.split(self.sep)
-        get = self.connection.execute(f"SELECT * FROM main WHERE key = '{main_split[0]}'").fetchall()
+        get = self.connection.execute(f"SELECT * FROM main WHERE key = ?", (main_split[0],)).fetchall()
         if get != []:
             get = get[0]
         else:
@@ -96,7 +96,7 @@ class jql:
         return get
     
     def set_value_raw(self, key, value):
-        get = self.connection.execute(f"SELECT * FROM main WHERE key = '{key}'").fetchall()
+        get = self.connection.execute(f"SELECT * FROM main WHERE key = ?", (key,)).fetchall()
         if get == []:
             self.connection.execute("INSERT INTO main VALUES (?, ?)", (key, value))
         else:
@@ -108,7 +108,7 @@ class jql:
         self.save()
     
     def delete_key(self, key):
-        self.connection.execute(f"DELETE FROM main WHERE key = '{key}'")
+        self.connection.execute(f"DELETE FROM main WHERE key = ?", (key,))
         self.save()
     
     def db_exist(self):
@@ -137,7 +137,8 @@ class jql:
 
 if __name__ == "__main__":
     test = jql("my_database.db")
-    test.read("dfsaafasdf")
+    #test.read("dfsaafasdf")
+    test.delete("nuricik")
 
 #test.write("eiko", 1465)
 #test.write("eikosa.password","1234")
