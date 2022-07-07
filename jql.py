@@ -16,6 +16,12 @@ class jql:
         self.sqlFile = sqlFile
         self.sep = sep
         self.connection = sqlite3.connect(self.sqlFile)
+        if self.connection.execute("SELECT name FROM sqlite_master WHERE type='table';").fetchall() == []:
+            #create table with main
+            self.connection.execute("""CREATE TABLE "main" (
+	"key"	TEXT NOT NULL UNIQUE,
+	"value"	JSON NOT NULL
+);""")
         self.cursor = self.connection.cursor()
 
         self.connection.row_factory = dict_factory
@@ -38,6 +44,8 @@ class jql:
                     js = js[split[i]]
                 else:
                     return None
+            if len(js) == 1:
+                return list(js)[0]
             return js
         
         return get
@@ -136,9 +144,9 @@ class jql:
 
 
 if __name__ == "__main__":
-    test = jql("my_database.db")
+    test = jql("asdf.db")
     #test.read("dfsaafasdf")
-    test.delete("nuricik")
+    print(test.read("username"))
 
 #test.write("eiko", 1465)
 #test.write("eikosa.password","1234")
